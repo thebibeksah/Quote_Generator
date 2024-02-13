@@ -27,7 +27,6 @@ function getQuote(){
     xhr.onload = function(){
         if(this.status === 200){
             let obj = JSON.parse(this.responseText);
-            console.log(obj);
             let newQuote = document.getElementById("quote");
             let authorName = document.getElementById("author");
             let quotes = obj.quotes.length;
