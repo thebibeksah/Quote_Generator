@@ -3,15 +3,6 @@ let jsonLink = "https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215
 
 quoteBtn.addEventListener("click", getQuote);
 
-function countRecords(jsonObj) {
-    if (Array.isArray(jsonObj)) {
-        const numberOfRecords = jsonObj.length;
-        return numberOfRecords;
-    } else {
-        return 1;
-    }
-}
-
 function getRandomNumber(start, end) {
     if (typeof start !== 'number' || typeof end !== 'number') {
         console.error("Invalid input. Please provide valid numbers.");
@@ -39,15 +30,14 @@ function getQuote(){
             console.log(obj);
             let newQuote = document.getElementById("quote");
             let authorName = document.getElementById("author");
-            // console.log(countRecords(obj.quotes));
-            let quotes = countRecords(obj.quotes);
+            let quotes = obj.quotes.length;
             let randomNum = getRandomNumber(0, quotes);
             newQuote.innerHTML = obj.quotes[randomNum].quote;
             authorName.innerHTML = obj.quotes[randomNum].author;
 
         }
         else{
-            console.log("Internal Server Error");
+            newQuote.innerHTML = "Some Error Occured!!";
         }
     }
 
